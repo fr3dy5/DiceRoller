@@ -1,4 +1,18 @@
-﻿Random random = new Random();
+﻿//dice class
+public class Dice {
+
+    private Random random;
+
+    public Dice() {
+        random = new Random();
+    }
+
+    public int Roll() {
+        return random.Next(1, 7);
+    }
+}
+
+//Random random = new Random();
 int rerolls = 2;
 int finalScore = 0;
 int bonus = 0;
@@ -9,9 +23,8 @@ Dice[] dice = new Dice[5];
 int [] rolled = new int[5];
 for (int i = 0; i < 5; i++) {
     dice[i] = new Dice();
-    rolled[i] = random.Next(1, 7);
+    rolled[i] = dice[i].Roll();
 }
-
 
 do {
 
@@ -24,7 +37,7 @@ do {
         Console.WriteLine("Updated Rolls:");
         }
     for (int i = 0; i < 5; i++) {
-        rolled[i] = dice[i].RollNumber();    
+        rolled[i] = dice[i].Roll();    
         Console.WriteLine($"Die {dice[i]}: {rolled[i]}");
     // Console.WriteLine($"Die 2: {rolled[1]}");
     // Console.WriteLine($"Die 3: {rolled[2]}");
@@ -48,24 +61,26 @@ do {
                                  .Select(s => int.Parse(s.Trim()))
                                  .ToArray();   
         foreach (int die in rerollDice) {
+            //take element in rolled and replace with a new roll value
             switch (die) {
                 case 1:
-                dice[0] = random.Next(1, 7);
+                rolled[0] = dice[0].Roll();
                 break;
                 case 2:
-                dice[1] = random.Next(1, 7);
+                rolled[1] = dice[1].Roll();
                 break;
                 case 3:
-                dice[2] = random.Next(1, 7);
+                rolled[2] = dice[2].Roll();
                 break;
                 case 4:
-                dice[3] = random.Next(1, 7);
+                rolled[3] = dice[3].Roll();
                 break;
                 case 5:
-                dice[4] = random.Next(1, 7);
+                rolled[4] = dice[4].Roll();
                 break;
             }
-        } 
+        }
+        rerolls--; 
     }
 } while (rerolls != 0); { 
 
