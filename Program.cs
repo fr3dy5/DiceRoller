@@ -35,7 +35,8 @@ do {
     Console.Write($"You have {rerolls} rerolls remaining): ");
     Console.ReadLine();
 
-} while (rerolls != 0) {
+} while (rerolls != 0) { 
+    //put switch case here?
     if ( == 2) {
         bonus = 10;
     }
